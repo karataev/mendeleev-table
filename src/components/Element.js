@@ -11,9 +11,15 @@ top: ${props => props.y * HEIGHT}px;
 left: ${props => props.x * WIDTH}px;
 width: ${WIDTH}px;
 height: ${HEIGHT}px;
-border: 1px solid #aaa;
-padding: 5px;
+border: 1px solid #22292F;
 font-size: 10px;
+color: #22292F;
+background: #FFF;
+`;
+
+const TopRow = styled.div`
+display: flex;
+justify-content: space-between;
 `;
 
 const Symbol = styled.div`
@@ -36,7 +42,10 @@ export default class Element extends React.Component {
 
     return (
       <Root x={data.xpos - 1} y={data.ypos - 1}>
-        <div>{data.number}</div>
+        <TopRow>
+          <div>{data.number}</div>
+          <div>{data.atomic_mass.toFixed(3)}</div>
+        </TopRow>
         <Symbol>{data.symbol}</Symbol>
         <Name>{data.name}</Name>
       </Root>
