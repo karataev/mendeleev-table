@@ -6,9 +6,7 @@ import Element from "./Element";
 
 
 const Root = styled.div`
-border: 1px solid black;
-display: flex;
-flex-wrap: wrap;
+position: relative;
 `;
 
 export default class ElementTable extends React.Component {

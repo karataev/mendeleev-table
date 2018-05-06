@@ -2,12 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+const WIDTH = 60;
+const HEIGHT = 60;
+
 const Root = styled.div`
+position: absolute;
+top: ${props => props.y * HEIGHT}px;
+left: ${props => props.x * WIDTH}px;
+width: ${WIDTH}px;
+height: ${HEIGHT}px;
 border: 1px solid #aaa;
 padding: 5px;
-flex: 80px 0 0;
-height: 50px;
-font-size: 12px;
+font-size: 10px;
 `;
 
 const Symbol = styled.div`
@@ -29,7 +35,7 @@ export default class Element extends React.Component {
     const {data} = this.props;
 
     return (
-      <Root>
+      <Root x={data.xpos - 1} y={data.ypos - 1}>
         <div>{data.number}</div>
         <Symbol>{data.symbol}</Symbol>
         <Name>{data.name}</Name>
