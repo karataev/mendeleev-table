@@ -4,6 +4,10 @@ import styled from 'styled-components';
 
 import {CellRoot} from "../components/styles";
 
+const CellRootExt = CellRoot.extend`
+background: ${props => props.color};
+`;
+
 const TopRow = styled.div`
 display: flex;
 justify-content: space-between;
@@ -28,14 +32,14 @@ export default class ElementCell extends React.Component {
     const {data} = this.props;
 
     return (
-      <CellRoot>
+      <CellRootExt color={data.category_color}>
         <TopRow>
           <div>{data.number}</div>
           <div>{data.atomic_mass.toFixed(3)}</div>
         </TopRow>
         <Symbol>{data.symbol}</Symbol>
         <Name>{data.name_ru || data.name}</Name>
-      </CellRoot>
+      </CellRootExt>
     )
   }
 }

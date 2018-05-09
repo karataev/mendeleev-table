@@ -7,6 +7,7 @@ import ElementCell from "./ElementCell";
 import EmptyCell from "./EmptyCell";
 import Lantanoids from "./Lantanoids";
 import Actinoids from "./Actinoids";
+import CategoryList from "../list/CategoryList";
 
 
 const Root = styled.div`
@@ -52,6 +53,7 @@ export default class ElementTable extends React.Component {
           <Lantanoids/>
           <Actinoids/>
         </div>
+        <CategoryList/>
       </Root>
     )
   }
