@@ -11,10 +11,6 @@ const Root = styled.div`
 
 `;
 
-const Row = styled.div`
-display: flex;
-`;
-
 const tableData = [
   'H x x x x x x x x x x x x x x x x He',
   'Li Be x x x x x x x x x x B C N O F Ne',
@@ -37,17 +33,26 @@ export default class ElementTable extends React.Component {
   };
 
   render() {
-    const {elements} = this.props;
+    const getCell = (symbol, i) => {
+      if (symbol === 'x') return <EmptyCell key={i} />;
+
+      const element = getElementBySymbol(this.props.elements, symbol);
+      return <ElementCell data={element} key={i}/>
+    };
 
     return (
       <Root>
-        {tableData.map((row, j) => (
-          <Row key={j}>
-            {row.map((symbol, i) => (
-              symbol !== 'x' ? <ElementCell data={getElementBySymbol(elements, symbol)} key={i} /> : <EmptyCell key={i} />
+        <div>
+          <table>
+            <tbody>
+            {tableData.map((row, j) => (
+              <tr key={j}>
+                {row.map((symbol, i) => getCell(symbol, i))}
+              </tr>
             ))}
-          </Row>
-        ))}
+            </tbody>
+          </table>
+        </div>
       </Root>
     )
   }
