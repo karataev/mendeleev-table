@@ -144,7 +144,7 @@ let categories = [
   {
     name: 'Постпереходные металлы',
     color: '#ccc',
-    symbols: 'Al Ga Ge In Sn Sb Ti Pb Bi Po Nh Fl Mc Lv'.split(' '),
+    symbols: 'Al Ga Ge In Sn Sb Tl Pb Bi Po Nh Fl Mc Lv'.split(' '),
   },
   {
     name: 'Полуметаллы',
@@ -164,7 +164,7 @@ let categories = [
   {
     name: 'Лантаноиды',
     color: '#ffbfff',
-    symbols: 'La Ce Pr Nd Pm Sm Eu Gs Tb Dy Ho Er Tm Yb Lu'.split(' '),
+    symbols: 'La Ce Pr Nd Pm Sm Eu Gd Tb Dy Ho Er Tm Yb Lu'.split(' '),
   },
   {
     name: 'Актиноиды',
