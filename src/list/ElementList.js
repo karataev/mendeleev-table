@@ -2,6 +2,7 @@ import React from 'react';
 
 import {getAll} from "../elements";
 import ElementItem from "./ElementItem";
+import CategoryList from "./CategoryList";
 
 export default class ElementList extends React.Component {
 
@@ -10,7 +11,7 @@ export default class ElementList extends React.Component {
 
     return (
       <div>
-        <div>Список элементов</div>
+        <CategoryList/>
         <table>
           <thead>
           <tr>

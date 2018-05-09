@@ -125,13 +125,80 @@ let ruNames = {
   Lr: 'Лоуренсий',
 };
 
+let categories = [
+  {
+    name: 'Щелочные металлы',
+    color: '#f66',
+    symbols: 'Li Na K Rb Cs Fr'.split(' '),
+  },
+  {
+    name: 'Щелочноземельные металлы',
+    color: '#ffdead',
+    symbols: 'Be Mg Ca Sr Ba Ra'.split(' '),
+  },
+  {
+    name: 'Переходные металлы',
+    color: '#ffc0c0',
+    symbols: 'Sc Ti V Cr Mn Fe Co Ni Cu Zn Y Zr Nb Mo Tc Ru Rh Pd Ag Cd Hf Ta W Re Os Ir Pt Au Hg Rf Db Sg Bh Hs Mt Ds Rg Cn'.split(' '),
+  },
+  {
+    name: 'Постпереходные металлы',
+    color: '#ccc',
+    symbols: 'Al Ga Ge In Sn Sb Ti Pb Bi Po Nh Fl Mc Lv'.split(' '),
+  },
+  {
+    name: 'Полуметаллы',
+    color: '#cc9',
+    symbols: 'B Si Ge As Sb Te'.split(' '),
+  },
+  {
+    name: 'Галогены',
+    color: '#ff9',
+    symbols: 'F Cl Br I At Ts'.split(' '),
+  },
+  {
+    name: 'Благородные газы',
+    color: '#c0ffff',
+    symbols: 'He Ne Ar Kr Xe Rn Og'.split(' '),
+  },
+  {
+    name: 'Лантаноиды',
+    color: '#ffbfff',
+    symbols: 'La Ce Pr Nd Pm Sm Eu Gs Tb Dy Ho Er Tm Yb Lu'.split(' '),
+  },
+  {
+    name: 'Актиноиды',
+    color: '#ef99cc',
+    symbols: 'Ac Th Pa U Np Pu Am Cm Bk Cf Es Fm Md No Lr'.split(' '),
+  },
+];
+
+function getCategoryColor(symbol) {
+  for (let i = 0; i < categories.length; i++) {
+    let category = categories[i];
+    if (category.symbols.indexOf(symbol) > -1) return category.color;
+  }
+  return '#fff';
+}
+
+export function getCategories() {
+  return categories;
+}
+
 function addRuName(element) {
   element.name_ru = ruNames[element.symbol];
+  return element;
+}
+
+function addCategoryColor(element) {
+  element.category_color = getCategoryColor(element.symbol);
+  return element;
 }
 
 export function init() {
-  data = rawData.elements;
-  data.forEach(addRuName);
+  data = rawData.elements
+    .map(addRuName)
+    .map(addCategoryColor);
 }
 
 export function findBySymbol(symbol) {
