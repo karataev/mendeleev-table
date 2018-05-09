@@ -34,7 +34,7 @@ export default class ElementCell extends React.Component {
           <div>{data.atomic_mass.toFixed(3)}</div>
         </TopRow>
         <Symbol>{data.symbol}</Symbol>
-        <Name>{data.name}</Name>
+        <Name>{data.name_ru || data.name}</Name>
       </CellRoot>
     )
   }
