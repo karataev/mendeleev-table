@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import {findBySymbol} from "../elements";
 import ElementCell from './ElementCell';
@@ -6,22 +7,20 @@ import ElementCell from './ElementCell';
 const data = 'Ac Th Pa U Np Pu Am Cm Bk Cf Es Fm Md No'
   .split(' ');
 
+const Title = styled.td`
+text-align: center;
+`;
+
 export default class Actinoids extends React.Component {
 
   render() {
     return (
-      <div>
-        <table>
-          <tbody>
-          <tr>
-            <td>Актиноиды</td>
-            {data.map(symbol => (
-              <ElementCell data={findBySymbol(symbol)} key={symbol} />
-            ))}
-          </tr>
-          </tbody>
-        </table>
-      </div>
+      <tr>
+        <Title colSpan={3}>Актиноиды</Title>
+        {data.map(symbol => (
+          <ElementCell data={findBySymbol(symbol)} key={symbol} />
+        ))}
+      </tr>
     )
   }
 }

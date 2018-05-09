@@ -47,12 +47,10 @@ export default class ElementTable extends React.Component {
               {row.map((symbol, i) => getCell(symbol, i))}
             </tr>
           ))}
-          </tbody>
-        </table>
-        <div>
           <Lantanoids/>
           <Actinoids/>
-        </div>
+          </tbody>
+        </table>
         <CategoryList/>
       </Root>
     )
