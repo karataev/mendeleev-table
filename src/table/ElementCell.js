@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import {CellRoot} from "./styles";
+import {CellRoot} from "../components/styles";
 
 const TopRow = styled.div`
 display: flex;

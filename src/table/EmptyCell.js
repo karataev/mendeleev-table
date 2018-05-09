@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {CellRoot} from "./styles";
+import {CellRoot} from "../components/styles";
 
 const EmptyCellRoot = CellRoot.extend`
 border-color: transparent;
