@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import _ from 'lodash';
 
+import {findBySymbol} from "../elements";
 import ElementCell from "./ElementCell";
 import EmptyCell from "./EmptyCell";
+import Lantanoids from "./Lantanoids";
+import Actinoids from "./Actinoids";
 
 
 const Root = styled.div`
@@ -22,36 +24,33 @@ const tableData = [
 ]
   .map(row => row.split(' '));
 
-function getElementBySymbol(elements, symbol) {
-  return _.find(elements, {symbol});
-}
-
 export default class ElementTable extends React.Component {
 
   static propTypes = {
-    elements: PropTypes.array.isRequired,
   };
 
   render() {
     const getCell = (symbol, i) => {
       if (symbol === 'x') return <EmptyCell key={i} />;
 
-      const element = getElementBySymbol(this.props.elements, symbol);
+      const element = findBySymbol(symbol);
       return <ElementCell data={element} key={i}/>
     };
 
     return (
       <Root>
+        <table>
+          <tbody>
+          {tableData.map((row, j) => (
+            <tr key={j}>
+              {row.map((symbol, i) => getCell(symbol, i))}
+            </tr>
+          ))}
+          </tbody>
+        </table>
         <div>
-          <table>
-            <tbody>
-            {tableData.map((row, j) => (
-              <tr key={j}>
-                {row.map((symbol, i) => getCell(symbol, i))}
-              </tr>
-            ))}
-            </tbody>
-          </table>
+          <Lantanoids/>
+          <Actinoids/>
         </div>
       </Root>
     )
