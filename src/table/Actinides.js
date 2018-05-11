@@ -1,11 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import {findBySymbol} from "../elements";
+import {findBySymbol, getActinidesCategory} from "../elements";
 import ElementCell from './ElementCell';
 
-const data = 'Ac Th Pa U Np Pu Am Cm Bk Cf Es Fm Md No Lr'
-  .split(' ');
 
 const Title = styled.td`
 text-align: center;
@@ -14,10 +12,12 @@ text-align: center;
 export default class Actinides extends React.Component {
 
   render() {
+    const symbols = getActinidesCategory().symbols;
+
     return (
       <tr>
         <Title colSpan={2}>Актиноиды</Title>
-        {data.map(symbol => (
+        {symbols.map(symbol => (
           <ElementCell data={findBySymbol(symbol)} key={symbol} />
         ))}
       </tr>

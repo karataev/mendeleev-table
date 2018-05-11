@@ -1,11 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import {findBySymbol} from "../elements";
+import {findBySymbol, getLanthinidesCategory} from "../elements";
 import ElementCell from './ElementCell';
-
-const data = 'La Ce Pr Nd Pm Sm Eu Gd Tb Dy Ho Er Tm Yb Lu'
-  .split(' ');
 
 const Title = styled.td`
 text-align: center;
@@ -14,10 +11,12 @@ text-align: center;
 export default class Lanthanides extends React.Component {
 
   render() {
+    const symbols = getLanthinidesCategory().symbols;
+
     return (
       <tr>
         <Title colSpan={2}>Лантаноиды</Title>
-        {data.map(symbol => (
+        {symbols.map(symbol => (
           <ElementCell data={findBySymbol(symbol)} key={symbol} />
         ))}
       </tr>
