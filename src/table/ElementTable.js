@@ -10,21 +10,18 @@ import MassCalculator from "../components/MassCalculator";
 
 
 const tableData = [
-  'H x x x x x x x x x x x x x x x x He',
-  'Li Be x x x x x x x x x x B C N O F Ne',
-  'Na Mg x x x x x x x x x x Al Si P S Cl Ar',
-  'K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Kr',
-  'Rb Sr Y Zr Nb Mo Tc Ru Rh Pd Ag Cd In Sn Sb Te I Xe',
-  'Cs Ba lg Hf Ta W Re Os Ir Pt Au Hg Tl Pb Bi Po At Rn',
-  'Fr Ra ag Rf Db Sg Bh Hs Mt Ds Rg Cn Nh Fl Mc Lv Ts Og',
-  'x x La Ce Pr Nd Pm Sm Eu Gd Tb Dy Ho Er Tm Yb Lu',
-  'x x Ac Th Pa U Np Pu Am Cm Bk Cf Es Fm Md No Lr',
+  'x 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18',
+  '1 H x x x x x x x x x x x x x x x x He',
+  '2 Li Be x x x x x x x x x x B C N O F Ne',
+  '3 Na Mg x x x x x x x x x x Al Si P S Cl Ar',
+  '4 K Ca Sc Ti V Cr Mn Fe Co Ni Cu Zn Ga Ge As Se Br Kr',
+  '5 Rb Sr Y Zr Nb Mo Tc Ru Rh Pd Ag Cd In Sn Sb Te I Xe',
+  '6 Cs Ba lg Hf Ta W Re Os Ir Pt Au Hg Tl Pb Bi Po At Rn',
+  '7 Fr Ra ag Rf Db Sg Bh Hs Mt Ds Rg Cn Nh Fl Mc Lv Ts Og',
+  'x x x La Ce Pr Nd Pm Sm Eu Gd Tb Dy Ho Er Tm Yb Lu',
+  'x x x Ac Th Pa U Np Pu Am Cm Bk Cf Es Fm Md No Lr',
 ]
   .map(row => row.split(' '));
-
-const TdTitle = styled.td`
-text-align: center;
-`;
 
 export default class ElementTable extends React.Component {
 
@@ -48,16 +45,19 @@ export default class ElementTable extends React.Component {
 
   render() {
     const getCell = (symbol, i) => {
+      const element = findBySymbol(symbol);
+      if (element) {
+        return <ElementCell onClick={this.onElementClick} data={element} key={i}/>
+      }
+
       switch (symbol) {
-        case 'x':
-          return <EmptyCell key={i} />;
         case 'lg':
           return <LanthanideGroupCell key={i} />;
         case 'ag':
           return <ActinideGroupCell key={i}/>;
         default:
-          const element = findBySymbol(symbol);
-          return <ElementCell onClick={this.onElementClick} data={element} key={i}/>
+          const content = symbol === 'x' ? '' : symbol;
+          return <EmptyCell key={i}>{content}</EmptyCell>;
       }
     };
 
