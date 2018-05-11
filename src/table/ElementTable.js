@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import {findBySymbol} from "../elements";
@@ -7,7 +6,6 @@ import ElementCell from "./ElementCell";
 import EmptyCell from "./EmptyCell";
 import Lanthanides from "./Lanthanides";
 import Actinides from "./Actinides";
-import CategoryList from "../list/CategoryList";
 import LanthanideGroupCell from "./LanthanideGroupCell";
 import ActinideGroupCell from "./ActinideGroupCell";
 
@@ -28,9 +26,6 @@ const tableData = [
   .map(row => row.split(' '));
 
 export default class ElementTable extends React.Component {
-
-  static propTypes = {
-  };
 
   render() {
     const getCell = (symbol, i) => {
@@ -60,7 +55,6 @@ export default class ElementTable extends React.Component {
           <Actinides/>
           </tbody>
         </table>
-        <CategoryList/>
       </Root>
     )
   }

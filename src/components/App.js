@@ -5,8 +5,8 @@ import {
   Link
 } from 'react-router-dom';
 
-import ElementTable from "../table/ElementTable";
 import ElementList from '../list/ElementList';
+import TablePage from "./TablePage";
 
 class App extends Component {
   render() {
@@ -17,7 +17,7 @@ class App extends Component {
             <li><Link to="/">Таблица</Link></li>
             <li><Link to="/list">Список</Link></li>
           </ul>
-          <Route exact path="/" component={ElementTable} />
+          <Route exact path="/" component={TablePage} />
           <Route exact path="/list" component={ElementList} />
         </div>
       </Router>
