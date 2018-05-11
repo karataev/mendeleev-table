@@ -144,12 +144,17 @@ let categories = [
   {
     name: 'Постпереходные металлы',
     color: '#ccc',
-    symbols: 'Al Ga Ge In Sn Sb Tl Pb Bi Po Nh Fl Mc Lv'.split(' '),
+    symbols: 'Al Ga In Sn Tl Pb Bi Nh Fl Mc Lv'.split(' '),
   },
   {
     name: 'Полуметаллы',
     color: '#cc9',
-    symbols: 'B Si Ge As Sb Te'.split(' '),
+    symbols: 'B Si Ge As Sb Te Po'.split(' '),
+  },
+  {
+    name: 'Другие неметаллы',
+    color: '#a0ffa0',
+    symbols: 'H C N O P S Se'.split(' '),
   },
   {
     name: 'Галогены',
@@ -174,11 +179,11 @@ let categories = [
 ];
 
 export function getLanthinidesCategory() {
-  return categories[7];
+  return categories[8];
 }
 
 export function getActinidesCategory() {
-  return categories[8];
+  return categories[9];
 }
 
 function getCategoryColor(symbol) {
