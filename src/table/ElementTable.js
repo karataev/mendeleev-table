@@ -8,6 +8,7 @@ import Lanthanides from "./Lanthanides";
 import Actinides from "./Actinides";
 import LanthanideGroupCell from "./LanthanideGroupCell";
 import ActinideGroupCell from "./ActinideGroupCell";
+import MassCalculator from "../components/MassCalculator";
 
 
 const Root = styled.div`
@@ -27,6 +28,24 @@ const tableData = [
 
 export default class ElementTable extends React.Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      selectedElements: [],
+    }
+  }
+
+  onElementClick = el => {
+    this.setState({
+      selectedElements: [...this.state.selectedElements, el],
+    })
+  };
+
+  onClear = () => {
+    this.setState({selectedElements: []});
+  };
+
   render() {
     const getCell = (symbol, i) => {
       switch (symbol) {
@@ -36,10 +55,10 @@ export default class ElementTable extends React.Component {
           return <LanthanideGroupCell key={i} />;
         case 'ag':
           return <ActinideGroupCell key={i}/>;
+        default:
+          const element = findBySymbol(symbol);
+          return <ElementCell onClick={this.onElementClick} data={element} key={i}/>
       }
-
-      const element = findBySymbol(symbol);
-      return <ElementCell data={element} key={i}/>
     };
 
     return (
@@ -51,10 +70,14 @@ export default class ElementTable extends React.Component {
               {row.map((symbol, i) => getCell(symbol, i))}
             </tr>
           ))}
-          <Lanthanides/>
-          <Actinides/>
+          <Lanthanides onElementClick={this.onElementClick}/>
+          <Actinides onElementClick={this.onElementClick}/>
           </tbody>
         </table>
+        <MassCalculator
+          elements={this.state.selectedElements}
+          onClear={this.onClear}
+        />
       </Root>
     )
   }

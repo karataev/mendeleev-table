@@ -26,13 +26,17 @@ export default class ElementCell extends React.Component {
 
   static propTypes = {
     data: PropTypes.object.isRequired,
+    onClick: PropTypes.func.isRequired,
   };
 
   render() {
-    const {data} = this.props;
+    const {data, onClick} = this.props;
 
     return (
-      <CellRootExt color={data.category_color}>
+      <CellRootExt
+        color={data.category_color}
+        onClick={() => onClick(data)}
+      >
         <TopRow>
           <div>{data.number}</div>
           <div>{data.atomic_mass.toFixed(3)}</div>

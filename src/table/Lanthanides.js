@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import {findBySymbol, getLanthinidesCategory} from "../elements";
@@ -10,6 +11,10 @@ text-align: center;
 
 export default class Lanthanides extends React.Component {
 
+  static propTypes = {
+    onElementClick: PropTypes.func.isRequired,
+  };
+
   render() {
     const symbols = getLanthinidesCategory().symbols;
 
@@ -17,7 +22,11 @@ export default class Lanthanides extends React.Component {
       <tr>
         <Title colSpan={2}>Лантаноиды</Title>
         {symbols.map(symbol => (
-          <ElementCell data={findBySymbol(symbol)} key={symbol} />
+          <ElementCell
+            onClick={this.props.onElementClick}
+            data={findBySymbol(symbol)}
+            key={symbol}
+          />
         ))}
       </tr>
     )
