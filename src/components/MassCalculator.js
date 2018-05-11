@@ -11,7 +11,23 @@ function getTotalMass(elements) {
 }
 
 function getFormula(elements) {
-  return elements.map(el => el.symbol).join('');
+  let items = [];
+  const addItem = symbol => items.push({symbol, count: 1});
+
+  elements.forEach((el, i) => {
+    if (i === 0) {
+      addItem(el.symbol);
+      return;
+    }
+
+    let lastItem = items[items.length - 1];
+    el.symbol === lastItem.symbol ? lastItem.count++ : addItem(el.symbol);
+  });
+
+  return items.reduce((acc, item) => {
+    let str = item.count === 1 ? item.symbol : `${item.symbol}${item.count}`;
+    return acc + str;
+  }, '');
 }
 
 export default class MassCalculator extends React.Component {
