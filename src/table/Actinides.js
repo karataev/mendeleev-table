@@ -11,7 +11,7 @@ const Title = styled.td`
 text-align: center;
 `;
 
-export default class Actinoids extends React.Component {
+export default class Actinides extends React.Component {
 
   render() {
     return (

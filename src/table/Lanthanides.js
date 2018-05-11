@@ -11,7 +11,7 @@ const Title = styled.td`
 text-align: center;
 `;
 
-export default class Lantanoids extends React.Component {
+export default class Lanthanides extends React.Component {
 
   render() {
     return (

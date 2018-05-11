@@ -173,6 +173,14 @@ let categories = [
   },
 ];
 
+export function getLanthinidesCategory() {
+  return categories[7];
+}
+
+export function getActinidesCategory() {
+  return categories[8];
+}
+
 function getCategoryColor(symbol) {
   for (let i = 0; i < categories.length; i++) {
     let category = categories[i];
