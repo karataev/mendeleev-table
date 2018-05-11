@@ -2,7 +2,7 @@ import React from 'react';
 
 import {getAll} from "../elements";
 import ElementItem from "./ElementItem";
-import CategoryList from "./CategoryList";
+import CategoryList from "../categories/CategoryList";
 
 export default class ElementList extends React.Component {
 

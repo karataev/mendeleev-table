@@ -1,7 +1,14 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import {getCategories} from "../elements";
 import CategoryItem from "./CategoryItem";
+
+
+const Root = styled.div`
+display: flex;
+justify-content: flex-end;
+`;
 
 export default class CategoryList extends React.Component {
 
@@ -9,12 +16,11 @@ export default class CategoryList extends React.Component {
     const categories = getCategories();
 
     return (
-      <div>
-        <h3>Категории</h3>
+      <Root>
         {categories.map((category, i) => (
           <CategoryItem category={category} key={i} />
         ))}
-      </div>
+      </Root>
     )
   }
 }
