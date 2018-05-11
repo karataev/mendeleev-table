@@ -8,6 +8,7 @@ import CategoryItem from "./CategoryItem";
 const Root = styled.div`
 display: flex;
 justify-content: flex-end;
+margin-bottom: 20px;
 `;
 
 export default class CategoryList extends React.Component {
