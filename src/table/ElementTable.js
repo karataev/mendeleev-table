@@ -1,14 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import {Subscribe} from 'unstated';
 
 import {findBySymbol} from "../elements";
 import ElementCell from "./ElementCell";
 import EmptyCell from "./EmptyCell";
 import LanthanideGroupCell from "./LanthanideGroupCell";
 import ActinideGroupCell from "./ActinideGroupCell";
-import MassCalculator from "../components/MassCalculator";
-import FormulaStore from '../stores/FormulaStore';
 
 
 const tableData = [
@@ -27,13 +25,17 @@ const tableData = [
 
 export default class ElementTable extends React.Component {
 
+  static propTypes = {
+    onElementSelect: PropTypes.func.isRequired,
+  };
+
   render() {
-    const getCell = (symbol, i, store) => {
+    const getCell = (symbol, i) => {
       const element = findBySymbol(symbol);
       if (element) {
         return (
           <ElementCell
-            onClick={(el) => store.addElement(el)}
+            onClick={this.props.onElementSelect}
             data={element}
             key={i}
           />
@@ -52,25 +54,17 @@ export default class ElementTable extends React.Component {
     };
 
     return (
-      <Subscribe to={[FormulaStore]}>
-        {store => (
-          <div>
-            <table>
-              <tbody>
-              {tableData.map((row, j) => (
-                <tr key={j}>
-                  {row.map((symbol, i) => getCell(symbol, i, store))}
-                </tr>
-              ))}
-              </tbody>
-            </table>
-            <MassCalculator
-              elements={store.state.elements}
-              onClear={() => store.clear()}
-            />
-          </div>
-        )}
-      </Subscribe>
+      <div>
+        <table>
+          <tbody>
+          {tableData.map((row, j) => (
+            <tr key={j}>
+              {row.map((symbol, i) => getCell(symbol, i))}
+            </tr>
+          ))}
+          </tbody>
+        </table>
+      </div>
     )
   }
 }

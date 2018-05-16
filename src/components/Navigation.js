@@ -48,6 +48,11 @@ export default class Navigation extends React.Component {
               Список
             </MenuItem>
           </Link>
+          <Link to="/calculator">
+            <MenuItem onClick={this.handleClose}>
+              Калькулятор
+            </MenuItem>
+          </Link>
         </Drawer>
       </div>
     )

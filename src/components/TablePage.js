@@ -1,25 +1,23 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, {Fragment} from 'react';
 
 import ElementTable from "../table/ElementTable";
 import CategoryList from "../categories/CategoryList";
 
 
-const TableHolder = styled.div`
-display: flex;
-justify-content: center;
-`;
-
 export default class TablePage extends React.Component {
+
+  onElementSelect = el => {
+    console.log('select', el);
+  };
 
   render() {
     return (
-      <div>
+      <Fragment>
         <CategoryList/>
-        <TableHolder>
-          <ElementTable/>
-        </TableHolder>
-      </div>
+        <ElementTable
+          onElementSelect={this.onElementSelect}
+        />
+      </Fragment>
     )
   }
 }
