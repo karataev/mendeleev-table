@@ -14,18 +14,20 @@ import Navigation from "./Navigation";
 class App extends Component {
   render() {
     return (
-      <Router>
-        <MuiThemeProvider>
-          <Provider>
-            <Navigation/>
+      <Provider>
+        <Router>
+          <MuiThemeProvider>
             <div>
-              <Route exact path="/" component={TablePage} />
-              <Route exact path="/calculator" component={CalculatorPage} />
-              <Route exact path="/list" component={ElementList} />
+              <Navigation/>
+              <div>
+                <Route exact path="/" component={TablePage} />
+                <Route exact path="/calculator" component={CalculatorPage} />
+                <Route exact path="/list" component={ElementList} />
+              </div>
             </div>
-          </Provider>
-        </MuiThemeProvider>
-      </Router>
+          </MuiThemeProvider>
+        </Router>
+      </Provider>
     );
   }
 }

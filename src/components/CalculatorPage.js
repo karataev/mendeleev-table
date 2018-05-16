@@ -6,6 +6,7 @@ import ElementTable from "../table/ElementTable";
 import CategoryList from "../categories/CategoryList";
 import FormulaStore from '../stores/FormulaStore';
 import MassCalculator from './MassCalculator';
+import AppStore from "../stores/AppStore";
 
 
 export default class CalculatorPage extends React.Component {
@@ -14,15 +15,16 @@ export default class CalculatorPage extends React.Component {
     return (
       <Fragment>
         <CategoryList/>
-        <Subscribe to={[FormulaStore]}>
-          {store => (
+        <Subscribe to={[AppStore, FormulaStore]}>
+          {(app, formula) => (
             <Fragment>
               <ElementTable
-                onElementSelect={(el) => store.addElement(el)}
+                data={app.getTableForm().data}
+                onElementSelect={(el) => formula.addElement(el)}
               />
               <MassCalculator
-                elements={store.state.elements}
-                onClear={() => store.clear()}
+                elements={formula.state.elements}
+                onClear={() => formula.clear()}
               />
             </Fragment>
           )}
