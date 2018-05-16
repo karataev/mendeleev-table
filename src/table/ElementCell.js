@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import {CellRoot} from "../components/styles";
+import {getCategoryColor} from "../elements";
 
 const CellRootExt = CellRoot.extend`
 background: ${props => props.color};
@@ -34,7 +35,7 @@ export default class ElementCell extends React.Component {
 
     return (
       <CellRootExt
-        color={data.category_color}
+        color={getCategoryColor(data.symbol)}
         onClick={() => onClick(data)}
       >
         <TopRow>

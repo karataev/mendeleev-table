@@ -46,7 +46,6 @@ export default class TablePage extends React.Component {
 
     return (
       <Fragment>
-        <CategoryList/>
         <Settings/>
         <Subscribe to={[AppStore]}>
           {store => (

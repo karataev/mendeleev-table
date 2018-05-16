@@ -186,7 +186,7 @@ export function getActinidesCategory() {
   return categories[9];
 }
 
-function getCategoryColor(symbol) {
+export function getCategoryColor(symbol) {
   for (let i = 0; i < categories.length; i++) {
     let category = categories[i];
     if (category.symbols.indexOf(symbol) > -1) return category.color;
@@ -203,15 +203,9 @@ function addRuName(element) {
   return element;
 }
 
-function addCategoryColor(element) {
-  element.category_color = getCategoryColor(element.symbol);
-  return element;
-}
-
 export function init() {
   data = rawData.elements
     .map(addRuName)
-    .map(addCategoryColor);
 }
 
 export function findBySymbol(symbol) {
