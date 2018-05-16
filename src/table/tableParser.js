@@ -19,6 +19,12 @@ text-align: center;
 border: transparent;
 `;
 
+const RowNumberCell = CellRoot.extend`
+font-size: 16px;
+text-align: center;
+border: transparent;
+`;
+
 function getCell(symbol, i, onElementSelect) {
   const element = findBySymbol(symbol);
   if (element) {
@@ -36,9 +42,14 @@ function getCell(symbol, i, onElementSelect) {
     return <GroupNumberCell key={i}>{group[1]}</GroupNumberCell>
   }
 
-  let period = /p(\d+)/.exec(symbol);
+  let period = /r(\d+)/.exec(symbol);
   if (period) {
     return <PeriodNumberCell key={i}>{period[1]}</PeriodNumberCell>
+  }
+
+  let row = /p(\d+)/.exec(symbol);
+  if (row) {
+    return <RowNumberCell key={i}>{row[1]}</RowNumberCell>
   }
 
   switch (symbol) {

@@ -27,6 +27,25 @@ const extraLongTable = [
 ]
   .map(row => row.split(/\s+/));
 
+const shortTable = [
+  'x   x   x   x   x   Группа',
+  'Период   Ряд g1  g2  g3  g4  g5  g6  g7  g8  x   x',
+  'p1  r1  H   x   x   x   x   x   H   He  x   x',
+  'p2  r2  Li  Be  B   C   N   O   F   Ne  x   x',
+  'p3  r3  Na  Mg  Al  Si  P   S   Cl  Ar  x   x',
+  'p4  r4  K   Ca  Sc  Ti  V   Cr  Mn  Fe  Co  Ni',
+  'p4  r5  Cu  Zn  Ga  Ge  As  Se  Br  Kr  x   x',
+  'p5  r6  Rb  Sr  Y   Zr  Nb  Mo  Tc  Ru  Rh  Pd',
+  'p5  r7  Ag  Cd  In  Sn  Sb  Te  I   Xe  x   x',
+  'p6  r8  Cs  Ba  La  Hf  Ta  W   Re  Os  Ir  Pt',
+  'p6  r9  Au  Hg  Tl  Pb  Bi  Po  At  Rn  x   x',
+  'p7  r10  Fr  Ra  Ac  Rf  Db  Sg  Bh  Hs  Mt  Ds',
+  'p7  r11 Rg  Cn  Nh  Fl  Mc  Lv  Ts  Og  x   x',
+  'x   x   La  Ce  Pr  Nd  Pm  Sm  Eu  Gd  Tb  Dy  Ho  Er  Tm  Yb  Lu',
+  'x   x   Ac  Th  Pa  U   Np  Pu  Am  Cm  Bk  Cf  Es  Fm  Md  No  Lr',
+]
+  .map(row => row.split(/\s+/));
+
 const tableForms = [
   {
     id: 1,
@@ -37,6 +56,11 @@ const tableForms = [
     id: 2,
     title: 'Сверхдлинная',
     data: extraLongTable,
+  },
+  {
+    id: 3,
+    title: 'Короткая',
+    data: shortTable,
   },
 ];
 
