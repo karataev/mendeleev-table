@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import {Subscribe} from 'unstated';
 
 import {findBySymbol} from "../elements";
 import ElementCell from "./ElementCell";
@@ -7,6 +8,7 @@ import EmptyCell from "./EmptyCell";
 import LanthanideGroupCell from "./LanthanideGroupCell";
 import ActinideGroupCell from "./ActinideGroupCell";
 import MassCalculator from "../components/MassCalculator";
+import FormulaStore from '../stores/FormulaStore';
 
 
 const tableData = [
@@ -25,29 +27,17 @@ const tableData = [
 
 export default class ElementTable extends React.Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      selectedElements: [],
-    }
-  }
-
-  onElementClick = el => {
-    this.setState({
-      selectedElements: [...this.state.selectedElements, el],
-    })
-  };
-
-  onClear = () => {
-    this.setState({selectedElements: []});
-  };
-
   render() {
-    const getCell = (symbol, i) => {
+    const getCell = (symbol, i, store) => {
       const element = findBySymbol(symbol);
       if (element) {
-        return <ElementCell onClick={this.onElementClick} data={element} key={i}/>
+        return (
+          <ElementCell
+            onClick={(el) => store.addElement(el)}
+            data={element}
+            key={i}
+          />
+        )
       }
 
       switch (symbol) {
@@ -62,21 +52,25 @@ export default class ElementTable extends React.Component {
     };
 
     return (
-      <div>
-        <table>
-          <tbody>
-          {tableData.map((row, j) => (
-            <tr key={j}>
-              {row.map((symbol, i) => getCell(symbol, i))}
-            </tr>
-          ))}
-          </tbody>
-        </table>
-        <MassCalculator
-          elements={this.state.selectedElements}
-          onClear={this.onClear}
-        />
-      </div>
+      <Subscribe to={[FormulaStore]}>
+        {store => (
+          <div>
+            <table>
+              <tbody>
+              {tableData.map((row, j) => (
+                <tr key={j}>
+                  {row.map((symbol, i) => getCell(symbol, i, store))}
+                </tr>
+              ))}
+              </tbody>
+            </table>
+            <MassCalculator
+              elements={store.state.elements}
+              onClear={() => store.clear()}
+            />
+          </div>
+        )}
+      </Subscribe>
     )
   }
 }

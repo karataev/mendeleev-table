@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Provider} from 'unstated';
 import {
   BrowserRouter as Router,
   Route,
@@ -14,13 +15,13 @@ class App extends Component {
     return (
       <Router>
         <MuiThemeProvider>
-          <div>
+          <Provider>
             <Navigation/>
             <div>
               <Route exact path="/" component={TablePage} />
               <Route exact path="/list" component={ElementList} />
             </div>
-          </div>
+          </Provider>
         </MuiThemeProvider>
       </Router>
     );
