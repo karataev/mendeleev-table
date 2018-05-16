@@ -11,15 +11,15 @@ padding: 5px;
 export default class CategoryItem extends React.Component {
 
   static propTypes = {
-    category: PropTypes.object.isRequired,
+    item: PropTypes.object.isRequired,
   };
 
   render() {
-    const {category} = this.props;
+    const {item} = this.props;
 
     return (
-      <Root color={category.color}>
-        <span>{category.name}</span>
+      <Root color={item.color}>
+        <span>{item.title}</span>
       </Root>
     )
   }

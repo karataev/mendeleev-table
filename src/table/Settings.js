@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import styled from 'styled-components';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
@@ -24,37 +24,43 @@ export default class Settings extends React.Component {
           actAsExpander={true}
           showExpandableButton={true}
         />
-        <CardText expandable={true}>
-          <Subscribe to={[AppStore]}>
-            {store => (
-              <SelectField
-                floatingLabelText="Форма таблицы"
-                value={store.state.tableForm.id}
-                onChange={(event, index, value) => store.setTableForm(value)}
-              >
-                {store.getAllForms().map(form => (
-                  <MenuItem
-                    value={form.id}
-                    primaryText={form.title}
-                    key={form.id}
-                  />
-                ))}
-              </SelectField>
-            )}
-          </Subscribe>
-        </CardText>
-        <CardText expandable={true}>
-          <SelectField
-            value={1}
-            floatingLabelText="Группировка"
-          >
-            <MenuItem
-              value={1}
-              primaryText="По семействам"
-            />
-          </SelectField>
-          <CategoryList/>
-        </CardText>
+        <Subscribe to={[AppStore]}>
+          {store => (
+            <Fragment>
+              <CardText expandable={true}>
+                <SelectField
+                  floatingLabelText="Форма таблицы"
+                  value={store.state.tableForm.id}
+                  onChange={(event, index, value) => store.setTableForm(value)}
+                >
+                  {store.getAllForms().map(form => (
+                    <MenuItem
+                      value={form.id}
+                      primaryText={form.title}
+                      key={form.id}
+                    />
+                  ))}
+                </SelectField>
+              </CardText>
+              <CardText expandable={true}>
+                <SelectField
+                  value={store.getColorGroup().id}
+                  onChange={(event, index, value) => store.setColorGroup(value)}
+                  floatingLabelText="Группировка"
+                >
+                  {store.getColorGroups().map(group => (
+                    <MenuItem
+                      value={group.id}
+                      primaryText={group.title}
+                      key={group.id}
+                    />
+                  ))}
+                </SelectField>
+                <CategoryList items={store.getColorGroup().data}/>
+              </CardText>
+            </Fragment>
+          )}
+        </Subscribe>
       </Card>
     )
   }

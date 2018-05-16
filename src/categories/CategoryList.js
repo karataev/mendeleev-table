@@ -1,7 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import {getCategories} from "../elements";
 import CategoryItem from "./CategoryItem";
 
 
@@ -11,13 +11,15 @@ display: flex;
 
 export default class CategoryList extends React.Component {
 
-  render() {
-    const categories = getCategories();
+  static propTypes = {
+    items: PropTypes.array.isRequired,
+  };
 
+  render() {
     return (
       <Root>
-        {categories.map((category, i) => (
-          <CategoryItem category={category} key={i} />
+        {this.props.items.map((item, i) => (
+          <CategoryItem item={item} key={i} />
         ))}
       </Root>
     )
