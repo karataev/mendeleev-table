@@ -6,6 +6,7 @@ import {Card, CardHeader, CardText} from 'material-ui/Card';
 
 import AppStore from '../stores/AppStore';
 import CategoryList from "../categories/CategoryList";
+import Navigation from "../components/Navigation";
 
 export default class Settings extends React.Component {
 
@@ -18,6 +19,7 @@ export default class Settings extends React.Component {
           showExpandableButton={true}
         />
         <CardText expandable={true}>
+          <Navigation/>
           <Subscribe to={[AppStore]}>
             {store => (
               <div>

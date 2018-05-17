@@ -1,15 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, {Fragment} from 'react';
 import {Link} from 'react-router-dom';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
-import IconButton from 'material-ui/IconButton';
-
-const MenuHolder = styled.div`
-position: absolute;
-top: 0;
-left: 0;
-`;
+import RaisedButton from 'material-ui/RaisedButton';
 
 export default class Navigation extends React.Component {
 
@@ -25,13 +18,10 @@ export default class Navigation extends React.Component {
 
   render() {
     return (
-      <div>
-        <MenuHolder>
-          <IconButton
-            iconClassName="material-icons md-24"
-            onClick={this.handleToggle}
-          >menu</IconButton>
-        </MenuHolder>
+      <Fragment>
+        <RaisedButton
+          onClick={this.handleToggle}
+        >Меню</RaisedButton>
         <Drawer
           docked={false}
           width={200}
@@ -54,7 +44,7 @@ export default class Navigation extends React.Component {
             </MenuItem>
           </Link>
         </Drawer>
-      </div>
+      </Fragment>
     )
   }
 }

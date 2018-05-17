@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import {getCategoryColor} from "../elements";
-
 const Root = styled.tr`
 background-color: ${props => props.category_color};
 `;
@@ -18,7 +16,7 @@ export default class ElementItem extends React.Component {
     const {data} = this.props;
 
     return (
-      <Root category_color={getCategoryColor(data.symbol)}>
+      <Root>
         <td>{data.number}</td>
         <td>{data.name_ru || data.name}</td>
         <td>{data.symbol}</td>
