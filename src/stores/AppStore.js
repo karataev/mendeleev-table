@@ -1,6 +1,5 @@
 import {Container} from 'unstated';
 import _ from 'lodash';
-import {getCategoryColor} from "../elements";
 
 const longTable = [
   'x   g1  x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   x   g18',

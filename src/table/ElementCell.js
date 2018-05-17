@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import {Subscribe} from 'unstated';
 
 import {CellRoot} from "../components/styles";
-import {getCategoryColor} from "../elements";
 import AppStore from "../stores/AppStore";
 
 const CellRootExt = CellRoot.extend`

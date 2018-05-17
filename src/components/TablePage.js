@@ -4,7 +4,6 @@ import FlatButton from 'material-ui/FlatButton';
 import {Subscribe} from 'unstated';
 
 import ElementTable from "../table/ElementTable";
-import CategoryList from "../categories/CategoryList";
 import Settings from "../table/Settings";
 import AppStore from '../stores/AppStore';
 
@@ -41,7 +40,7 @@ export default class TablePage extends React.Component {
     ];
 
     const {selectedElement} = this.state;
-    const title = selectedElement && selectedElement.name_ru || '';
+    const title = selectedElement && selectedElement.name_ru;
     const isOpen = !!this.state.selectedElement;
 
     return (
