@@ -2,7 +2,11 @@ import React from 'react';
 
 import {getAll} from "../elements";
 import ElementItem from "./ElementItem";
-import CategoryList from "../categories/CategoryList";
+import ColorList from "../colors/ColorList";
+import Navigation from "../components/Navigation";
+import groups from "../stores/groups";
+
+const colorGroup = groups.getBlocksGroup();
 
 export default class ElementList extends React.Component {
 
@@ -11,7 +15,8 @@ export default class ElementList extends React.Component {
 
     return (
       <div>
-        <CategoryList/>
+        <Navigation/>
+        <ColorList items={colorGroup.data}/>
         <table>
           <thead>
           <tr>
@@ -24,7 +29,11 @@ export default class ElementList extends React.Component {
           </thead>
           <tbody>
           {elements.map(element => (
-            <ElementItem data={element} key={element.symbol} />
+            <ElementItem
+              color={groups.getSymbolColor(element.symbol, colorGroup.id)}
+              data={element}
+              key={element.symbol}
+            />
           ))}
           </tbody>
         </table>

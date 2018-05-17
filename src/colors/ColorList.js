@@ -2,14 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import CategoryItem from "./CategoryItem";
-
+import ColorItem from "./ColorItem";
 
 const Root = styled.div`
 display: flex;
 `;
 
-export default class CategoryList extends React.Component {
+export default class ColorList extends React.Component {
 
   static propTypes = {
     items: PropTypes.array.isRequired,
@@ -19,7 +18,7 @@ export default class CategoryList extends React.Component {
     return (
       <Root>
         {this.props.items.map((item, i) => (
-          <CategoryItem item={item} key={i} />
+          <ColorItem item={item} key={i} />
         ))}
       </Root>
     )

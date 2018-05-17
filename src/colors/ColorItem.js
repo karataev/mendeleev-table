@@ -8,7 +8,7 @@ background: ${props => props.color};
 padding: 5px;
 `;
 
-export default class CategoryItem extends React.Component {
+export default class ColorItem extends React.Component {
 
   static propTypes = {
     item: PropTypes.object.isRequired,

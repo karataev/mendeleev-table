@@ -3,20 +3,21 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Root = styled.tr`
-background-color: ${props => props.category_color};
+background-color: ${props => props.color};
 `;
 
 export default class ElementItem extends React.Component {
 
   static propTypes = {
     data: PropTypes.object.isRequired,
+    color: PropTypes.string.isRequired,
   };
 
   render() {
-    const {data} = this.props;
+    const {data, color} = this.props;
 
     return (
-      <Root>
+      <Root color={color}>
         <td>{data.number}</td>
         <td>{data.name_ru || data.name}</td>
         <td>{data.symbol}</td>
