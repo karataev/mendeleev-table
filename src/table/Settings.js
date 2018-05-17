@@ -7,6 +7,8 @@ import {Card, CardHeader, CardText} from 'material-ui/Card';
 import AppStore from '../stores/AppStore';
 import ColorList from "../colors/ColorList";
 import Navigation from "../components/Navigation";
+import tableForms from '../stores/tableForms';
+import colorGroups from '../stores/groups';
 
 export default class Settings extends React.Component {
 
@@ -28,7 +30,7 @@ export default class Settings extends React.Component {
                   value={store.state.tableForm.id}
                   onChange={(event, index, value) => store.setTableForm(value)}
                 >
-                  {store.getAllForms().map(form => (
+                  {tableForms.getAll().map(form => (
                     <MenuItem
                       value={form.id}
                       primaryText={form.title}
@@ -41,7 +43,7 @@ export default class Settings extends React.Component {
                   onChange={(event, index, value) => store.setColorGroup(value)}
                   floatingLabelText="Группировка"
                 >
-                  {store.getColorGroups().map(group => (
+                  {colorGroups.getAll().map(group => (
                     <MenuItem
                       value={group.id}
                       primaryText={group.title}
