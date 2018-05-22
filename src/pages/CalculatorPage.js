@@ -3,7 +3,7 @@ import {Subscribe} from 'unstated';
 
 import ElementTable from "../table/ElementTable";
 import FormulaStore from '../stores/FormulaStore';
-import MassCalculator from './MassCalculator';
+import MassCalculator from '../components/MassCalculator';
 import AppStore from "../stores/AppStore";
 
 

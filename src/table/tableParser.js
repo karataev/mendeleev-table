@@ -25,13 +25,14 @@ text-align: center;
 border: transparent;
 `;
 
-function getCell(symbol, i, onElementSelect) {
+function getCell(symbol, i, onElementSelect, color) {
   const element = findBySymbol(symbol);
   if (element) {
     return (
       <ElementCell
         onClick={onElementSelect}
         data={element}
+        color={color}
         key={i}
       />
     )

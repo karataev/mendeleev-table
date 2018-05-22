@@ -10,3 +10,8 @@ font-size: 10px;
 color: #22292F;
 background: #FFF;
 `;
+
+export const Symbol = styled.div`
+text-align: center;
+font-size: 2em;
+`;

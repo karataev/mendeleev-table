@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Subscribe} from 'unstated';
 
 import tableParser from './tableParser';
-
+import AppStore from '../stores/AppStore';
 
 export default class ElementTable extends React.Component {
 
@@ -15,15 +16,19 @@ export default class ElementTable extends React.Component {
 
     return (
       <div>
-        <table>
-          <tbody>
-          {this.props.data.map((row, j) => (
-            <tr key={j}>
-              {row.map((symbol, i) => tableParser.getCell(symbol, i, this.props.onElementSelect))}
-            </tr>
-          ))}
-          </tbody>
-        </table>
+        <Subscribe to={[AppStore]}>
+          {app => (
+            <table>
+              <tbody>
+              {this.props.data.map((row, j) => (
+                <tr key={j}>
+                  {row.map((symbol, i) => tableParser.getCell(symbol, i, this.props.onElementSelect, app.getElementColor(symbol)))}
+                </tr>
+              ))}
+              </tbody>
+            </table>
+          )}
+        </Subscribe>
       </div>
     )
   }

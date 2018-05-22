@@ -4,6 +4,29 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 
+const links = [
+  {
+    id: 1,
+    url: '/',
+    title: 'Таблица'
+  },
+  {
+    id: 2,
+    url: '/list',
+    title: 'Список',
+  },
+  {
+    id: 3,
+    url: '/calculator',
+    title: 'Калькулятор',
+  },
+  {
+    id: 4,
+    url: '/cells',
+    title: 'Ячейки',
+  },
+];
+
 export default class Navigation extends React.Component {
 
   constructor(props) {
@@ -28,21 +51,13 @@ export default class Navigation extends React.Component {
           open={this.state.open}
           onRequestChange={(open) => this.setState({open})}
         >
-          <Link to="/">
-            <MenuItem onClick={this.handleClose}>
-              Таблица
-            </MenuItem>
-          </Link>
-          <Link to="/list">
-            <MenuItem onClick={this.handleClose}>
-              Список
-            </MenuItem>
-          </Link>
-          <Link to="/calculator">
-            <MenuItem onClick={this.handleClose}>
-              Калькулятор
-            </MenuItem>
-          </Link>
+          {links.map(link => (
+            <Link to={link.url} key={link.id}>
+              <MenuItem onClick={this.handleClose}>
+                {link.title}
+              </MenuItem>
+            </Link>
+          ))}
         </Drawer>
       </Fragment>
     )
