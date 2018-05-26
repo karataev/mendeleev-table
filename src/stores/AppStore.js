@@ -11,7 +11,7 @@ export default class AppStore extends Container {
 
   state = {
     tableForm: tableForms[0],
-    colorGroup: colorGroups[2],
+    colorGroup: colorGroups[1],
   };
 
   setTableForm(id) {

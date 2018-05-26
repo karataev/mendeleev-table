@@ -21,7 +21,7 @@ export default class Settings extends React.Component {
           showExpandableButton={true}
         />
         <CardText expandable={true}>
-          <Navigation/>
+          {/*<Navigation/>*/}
           <Subscribe to={[AppStore]}>
             {store => (
               <div>

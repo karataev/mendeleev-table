@@ -1,8 +1,12 @@
 # Периодическая система элементов Д. И. Менделеева
 
+[Демо](http://mendeleev-table.surge.sh)
 
+### Данные
 
-Технологии
+1. [Элементы](https://github.com/Bowserinator/Periodic-Table-JSON)
 
-1. [Данные элементов](https://github.com/Bowserinator/Periodic-Table-JSON)
+### Инструменты
+
+React, react-router, unstated.
 
